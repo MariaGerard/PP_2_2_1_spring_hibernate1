@@ -55,13 +55,21 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return series == car.series && Objects.equals(id, car.id) && Objects.equals(model, car.model);
+
+        if ((series != car.series) || (Objects.equals(id, car.id))) {
+            return false;
+        }
+        return Objects.equals(model, car.model);
     }
 
     @Override
     public int hashCode() {
+        int result = id !=null ? id.hashCode() : 0;
+        int a = result * 31;
+        result = a + series;
+        result = a + (model !=null ? model.hashCode() : 0);
 
-        return Objects.hash(id, model, series);
+        return result;
     }
 
     @Override

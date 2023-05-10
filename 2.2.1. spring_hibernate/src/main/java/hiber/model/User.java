@@ -84,12 +84,23 @@ public class User {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
       User user = (User) o;
-      return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(car, user.car);
+
+      if (!Objects.equals(id, user.id) || (!Objects.equals(lastName, user.lastName))
+              ||  (!Objects.equals(email, user.email))) {
+         return false;
+      }
+     return Objects.equals(car, user.car);
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(id, firstName, lastName, email, car);
+      int result = id !=null ? id.hashCode() : 0;
+      int a = result * 31;
+      result = a + (firstName != null ? firstName.hashCode() : 0);
+      result = a + (lastName != null ? lastName.hashCode() : 0);
+      result = a + (email != null ? email.hashCode() : 0);
+      result = a + (car != null ? car.hashCode() : 0);
+      return result;
    }
 
    @Override

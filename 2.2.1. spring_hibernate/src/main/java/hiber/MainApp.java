@@ -30,13 +30,10 @@ public class MainApp {
          System.out.println("Car = " + user.getCar());
       }
 
-
       userService.add(new User("Bruce", "Wayne", "wayne@mail.ru", car1));
       userService.add(new User("Tony", "Stark", "stark@mail.ru", car2));
       userService.add(new User("Dominic ", "Toretto", "toretto@mail.ru", car3));
       userService.add(new User("Marty", "McFly", "mcfly@mail.ru", car4));
-
-
 
 
       System.out.println(userService.getUserCar(new Car("Mercedes", 1)));
